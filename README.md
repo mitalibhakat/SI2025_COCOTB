@@ -25,7 +25,18 @@
   <li><strong>Python-based Testing:</strong>Use Python's extensive libraries to simplify complex testing tasks.</li>
   <li><strong>Coroutines for concurrency:</strong>Schedule tasks and trigger events using coroutines.</li>
   <li><strong>Reusable and Modular:</strong>Easily maintain and extend testbenches.</li>
+  <li><strong>Provides Interface:</strong>Provides Python interface to control standard RTL simulators(Cadence,Ouesta,VCS,etc.)</li>
+  <li>Cocotb is completely free,open source</li>
 </ul>
+
+<hr>
+
+<h2 id="setup">2.Setting Up The Environment</h2>
+
+  
+</ol>
+
+
 
 
   
