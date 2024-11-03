@@ -32,10 +32,32 @@
 <hr>
 
 <h2 id="setup">2.Setting Up The Environment</h2>
-
-  
+<ol>
+  <li><strong> Install Python(Python3.6+)recommended :</strong></li>
+  <pre><code>sudo apt-get install make python3 python3-pip libpython3-dev</code></pre>
+  <li><strong>Check the Python version :</strong></li>
+  <pre><code> python3 --version </code></pre>
+  <li><strong>Set up a Virtual Environment :</strong></li>
+  <pre><code>python3 -m venv file_name </code></pre>
+   <li><strong>Activate the virtual environment :</strong></li>
+   On Linux:
+  <pre><code>source file_name/bin/activate</code></pre>
+  On Windows:
+  <pre><code>.\cocotb_env\Scripts\activate</code></pre>
+  <li><strong>Install Cocotb :</strong></li>
+  <pre><code>pip install cocotb</code></pre>
+  <li><strong>Install Cocotb Bus :</strong></li>
+<pre><code>pip install cocotb[bus] </code></pre>
+  <li><strong>Install a Supported Simulator :</strong></li>
+  Cocotb supports several simulators,such as Icarus Verilog, ModelSim, Xcelium, and VCS.Here's how to install Icarus Verilig for Open-Source Simulation:
+  Linux(use your package manager,e.g.,apt for Debian/Ubuntu):
+  <pre><code>sudo apt update
+sudo apt install iverilog
+  </code></pre>
+  <li>Verify Installation :</li>
+  <pre><code>python -m cocotb.config
+iverilog -v</code></pre>
 </ol>
-
 
 
 
