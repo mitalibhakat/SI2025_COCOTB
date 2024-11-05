@@ -39,6 +39,12 @@
   <pre><code> python3 --version </code></pre>
   <li><strong>Set up a Virtual Environment :</strong></li>
   <pre><code>python3 -m venv file_name </code></pre>
+  <p>Example: Create One Directory & set-up virtual environment
+  <pre><code>mkdir venv
+  cd venv
+  python3 -m venv venv_env
+</code></pre>
+Note:- here venv is my directory name </p>
    <li><strong>Activate the virtual environment :</strong></li>
    On Linux:
   <pre><code>source file_name/bin/activate</code></pre>
@@ -57,8 +63,21 @@ sudo apt install iverilog
   <li>Verify Installation :</li>
   <pre><code>python -m cocotb.config
 iverilog -v</code></pre>
-</ol>
+  <li><strong>Makefile :</strong></li>
+   Cocotb requires a Makefile for configuring simulator options and specifying the design files to be tested.Here is the basic structure of makefile:
+  <pre><code>SIM ?= icarus
+TOPLEVEL_LANG ?= verilog
+MODULE = test_module_name
 
+VERILOG_SOURCES = $(PWD)/path_to_verilog_file.v
+TOPLEVEL = your_dut_module
+
+include $(shell cocotb-config --makefiles)/Makefile.sim
+</code></pre>
+Note: Make sure that $Path should be correct.
+</ol>
+<h2 id="basics">2.Cocotb Basics</h2>
+<p>Cocotb is a revolutionary coroutine-based framework that brings the simplicity of Python to the complex world of hardware verification. By allowing developers to write testbenches in Python, Cocotb bridges the gap between software development practices and hardware verification methodologies.</p>
 
 
   
