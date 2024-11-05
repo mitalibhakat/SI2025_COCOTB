@@ -77,7 +77,23 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 Note: Make sure that $Path should be correct.
 </ol>
 <h2 id="basics">2.Cocotb Basics</h2>
-<p>Cocotb is a revolutionary coroutine-based framework that brings the simplicity of Python to the complex world of hardware verification. By allowing developers to write testbenches in Python, Cocotb bridges the gap between software development practices and hardware verification methodologies.</p>
+<p>Cocotb is a revolutionary coroutine-based framework that brings the simplicity of Python to the complex world of hardware verification. By allowing developers to write testbenches in Python, Cocotb bridges the gap between software development practices and hardware verification methodologies.
+<br>
+ <ol>
+   <li><strong>Basic Architecture</strong></li></p>
+Cocotb Requires Three things:
+<ul>
+  <li>DUT(Design Under Test)</li
+  <li>Makefile</li>
+  <li>Testbench in Python</li></ul>
+  <p> 
+    <ul>
+      Design Under Test(DUT) runs in standard simulator.
+      Cocotb provides interface between simulator and Python.
+      It uses Verilog Procedural Interface(VPI) or VHDL Procedural Interface(VHPI).
+    
+    
+    </p>
 
 
   
