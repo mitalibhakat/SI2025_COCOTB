@@ -86,14 +86,14 @@ Cocotb Requires Three things:
   <li>DUT(Design Under Test)</li
   <li>Makefile</li>
   <li>Testbench in Python</li></ul>
-  <p> 
-    <ul>
-      Design Under Test(DUT) runs in standard simulator.
-      Cocotb provides interface between simulator and Python.
-      It uses Verilog Procedural Interface(VPI) or VHDL Procedural Interface(VHPI).
+  <p>Below is the basic architecture of Cocotb:</p>
+<img src="" alt="Cocotb Architecture" width="500">
+
+
+
     
     
-    </p>
+    
 
 
   
