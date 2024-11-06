@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1730875072" />
+    <testcase name="test_xor_gate_simple" classname="test_xor_gate" file="/home/mitali/venv/shiftregister/basicgates/test/test_xor_gate.py" lineno="4" time="0.002765178680419922" sim_time_ns="4.001" ratio_time="1446.9227715123297" />
+  </testsuite>
+</testsuites>
