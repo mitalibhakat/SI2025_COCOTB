@@ -86,10 +86,26 @@ The Ingredients:
   <li> A Design Under Test(DUT):Verilog or VHDL</li
   <li>A Makefile</li>
   <li>Testbench in Python</li></ul>
-  <p>Below is the basic architecture of Cocotb:</p>
+  <p><strong></strong>Below is the basic architecture of Cocotb:</strong></p>
 <p align="center">
-<img src="doc/images/architecture.jpg" width="400">
+<img src="image/architecture.png" width="400">
+  <br>
 </p>
+  <p style="test-align: left;"> Working :</p>
+  <ul>
+    <li>Design Under Test(DUT) runs in standard simulator.</li>
+    <li>Cocotb provides interface between simulator and Python.</li>
+    <li>Uses Verilog Procedural Interface(VPI) or VHDL procedural Interface(VHPI).VPI -> Verilog and VHPI -> VHDL.</li>
+    <li>Python Testbench code can :
+    <ul>
+      <li> Reach into DUT hierarchy and change values.</li>
+      <li>Wait for simulation time to pass.</li>
+      <li>Wait for a rising or falling edge of a signal.</li>
+    </ul></li>
+    <p>Basic Example :</p>
+    
+  </ul>
+
 
 
     
