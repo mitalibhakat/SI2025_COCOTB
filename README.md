@@ -12,7 +12,6 @@
       </ul>
     <li><a href="#tests">Writing Cocotb Tests</a></li>
     <li><a href="#advanced">Advanced Topics</a></li>
-    <li><a href="#examples">Practical Examples</a></li>
     <li><a href="#troubleshooting">Common Issues and Debugging</a></li>
     <li><a href="#resources">Resources and Further Reading</a></li>
 </ul>
@@ -87,9 +86,13 @@ The Ingredients:
   <li>A Makefile</li>
   <li>Testbench in Python</li></ul>
   <p><strong></strong>Below is the basic architecture of Cocotb:</strong></p>
-<p align="center">
-<img src="image/architecture.png" width="400">
-  <br>
+<table>
+        <tr>
+            <td><img src="image/architecture.png" alt="Image 1" style="width: 100%;"></td>
+            <td><img src="image/overview.png" alt="Image 2" style="width: 100%;"></td>
+        </tr>
+    </table>
+   <br>
 </p>
   <p style="test-align: left;"> Working :</p>
   <ul>
@@ -163,7 +166,128 @@ async def test_xor_gate_simple(dut):
   <li>If any assertion fails,the test stops at the failed test case and reports the failure.</li>
   </ul>
   </ul>
+  <hr>
+  <h3 id="coroutines">Coroutines and Triggers</h3>
+<p>Cocotb uses <strong>coroutines</strong> and <strong>triggers</strong> to manage timing and events. This allows tasks to run concurrently within the same test.It allows suspending and resuming execution using <strong>await</strong>.
+  
+  <br>
+  
+  <strong>Coroutines</strong> help run multiple test tasks at once,even if they involve waiting for different times or events.</p>
+  <ul> <li>A coroutine in Python is defined with <strong>async def</strong></li>
+  <li>Cocotb coroutines typically represent test steps or procedures that involve waiting for signals or time delays.</li></ul>
+  <br>
+  <strong>Triggers</strong> are events that can be awaited by coroutines.They are used to pause a coroutine until a specific condition, time delay, or signal change occurs in the simulation. Cocotb provides various built-in triggers.
+  Example of Coroutines with Triggers in Cocotb
+  <pre><code>
+import cocotb
+from cocotb.triggers import Timer, RisingEdge, FallingEdge
 
+@cocotb.test()
+async def test_example(dut):
+    print("Test started")
+    
+    # Wait for a specific time period
+    await Timer(100, units="ns")
+    print("Waited for 100 ns")
+
+    # Wait for a rising edge on the clock signal
+    await RisingEdge(dut.clk)
+    print("Detected rising edge of the clock")
+
+    # Wait for a falling edge on the clock signal
+    await FallingEdge(dut.clk)
+    print("Detected falling edge of the clock")
+
+    # Wait for a combination of multiple edges
+    await Combine(RisingEdge(dut.clk), FallingEdge(dut.reset))
+    print("Detected rising edge of clk and falling edge of reset")
+ </code></pre>
+ <br>
+ In this example
+ <ul>
+   <li>The coroutine first waits for 100 ns using the Timer trigger.</li>
+   <li> Then, it waits for a rising edge on dut.clk.</li>
+   <li> It then waits for a falling edge on dut.clk.</li>
+   <li> Finally, it waits for both a rising edge on clk and a falling edge on reset simultaneously.</li>
+ </ul>
+ <h3 id="dut-interaction">Interacting with the DUT</h3>
+<p>Each signal in the DUT can be accessed directly as an attribute of the <code>dut</code> object:</p>
+
+<pre><code>dut.signal_name.value = 1
+await RisingEdge(dut.clk)
+assert dut.output_signal.value == expected_value</code></pre>
+
+<hr>
+
+<h2 id="tests">4. Writing Cocotb Tests</h2>
+<p>Structure a Cocotb test with setup, stimulus, assertions, and logging.</p>
+
+<pre><code>import cocotb
+from cocotb.triggers import RisingEdge
+
+@cocotb.test()
+async def test_simple(dut):
+    """Basic test that toggles a clock and checks output."""
+    dut.reset.value = 1
+    await Timer(5, units='ns')
+    dut.reset.value = 0
+
+    for i in range(10):
+        await RisingEdge(dut.clk)
+        dut.input_signal.value = i
+        assert dut.output_signal.value == expected_output(i)</code></pre>
+
+<hr>
+
+<h2 id="advanced">5. Advanced Topics</h2>
+
+<h3>Clock and Reset Management</h3>
+<pre><code>async def clock_gen(dut, period_ns=10):
+    while True:
+        dut.clk.value = 0
+        await Timer(period_ns / 2, units='ns')
+        dut.clk.value = 1
+        await Timer(period_ns / 2, units='ns')</code></pre>
+
+<h3>Using Assertions and Logging</h3>
+<p>Assertions help validate DUT outputs. Cocotb also provides <code>cocotb.log</code> for detailed logging.</p>
+<pre><code>
+dut.a.value = 1
+dut.b.value = 1
+await Timer(1, units='ns')
+assert dut.y.value == 0, f"Test failed with a = 1, b = 1, expected y=0, got y={dut.y.value}"
+</code></pre>
+<pre><code>
+  cocotb.log.info("Simulation started")
+assert dut.output_signal.value == expected_value, "Test failed: Output did not match"
+
+</code></pre>
+
+<hr>
+
+<h2 id="troubleshooting">6. Common Issues and Debugging</h2>
+<ul>
+    <li><strong>Simulator Path Issue:</strong> Ensure the simulator is in your <code>$PATH</code>.</li>
+    <li><strong>Signal Scoping:</strong> Use <code>dut.&lt;signal&gt;</code> to access DUT signals.</li>
+    <li><strong>Timing Conflicts:</strong> Use <code>await Timer()</code> to manage timing precisely.</li>
+</ul>
+
+<hr>
+
+<h2 id="resources">7. Resources and Further Reading</h2>
+<ul>
+    <li><a href="https://cocotb.readthedocs.io/">Cocotb Documentation</a></li>
+    <li><a href="https://docs.python.org/3/">Python Documentation</a></li>
+    <li><a href="https://github.com/cocotb/cocotb">Cocotb GitHub Repository</a></li>
+    <li><a href="https://docs.cocotb.org/en/stable/coroutines.html">Coroutines and tasks</a></li>
+  <li><a href="https://hardwareteams.com/docs/fpga-asic/cocotb/getting-started/"></a></li>
+</ul>
+
+</html>
+
+ 
+  
+  
 
 
     
