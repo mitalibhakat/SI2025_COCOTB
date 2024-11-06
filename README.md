@@ -102,8 +102,66 @@ The Ingredients:
       <li>Wait for simulation time to pass.</li>
       <li>Wait for a rising or falling edge of a signal.</li>
     </ul></li>
-    <p>Basic Example :</p>
-    
+    <p>Basic Example :
+    <br>
+    DUT of xor_gate.</p>
+  <pre><code>// xor_gate.v
+module xor_gate (
+    input wire a,
+    input wire b,
+    output wire y
+);
+    assign y = a ^ b;  // XOR gate logic
+endmodule
+  </code></pre>
+    <br>
+    <p>Testbench in python</p>
+    <pre><code> import cocotb
+from cocotb.triggers import Timer
+
+@cocotb.test()
+async def test_xor_gate_simple(dut):
+    """Test XOR gate with simple inputs"""
+
+    # Test Case 1: a=0, b=0, y should be 0
+    dut.a.value = 0
+    dut.b.value = 0
+    await Timer(1, units='ns')
+    assert dut.y.value == 0, f"Test failed with a = 0, b = 0, expected y=0, got y={dut.y.value}"
+
+    # Test Case 2: a=0, b=1, y should be 1
+    dut.a.value = 0
+    dut.b.value = 1
+    await Timer(1, units='ns')
+    assert dut.y.value == 1, f"Test failed with a = 0, b = 1, expected y=1, got y={dut.y.value}"
+
+    # Test Case 3: a=1, b=0, y should be 1
+    dut.a.value = 1
+    dut.b.value = 0
+    await Timer(1, units='ns')
+    assert dut.y.value == 1, f"Test failed with a = 1, b = 0, expected y=1, got y={dut.y.value}"
+
+    # Test Case 4: a=1, b=1, y should be 0
+    dut.a.value = 1
+    dut.b.value = 1
+    await Timer(1, units='ns')
+    assert dut.y.value == 0, f"Test failed with a = 1, b = 1, expected y=0, got y={dut.y.value}"
+</code></pre>
+<p><ul>
+  <li>In the above example @cocotb.test() decorator marks the test_xor_gate_simple function as test.</li>
+  <li>The test function accepts a dut(device under test),which is the XOR gate module,as its argument.</li>
+  <li>Assertion Check:</li>
+  <ul><li>For each case,the test uses an assert statement to verify that the output matched the expected result.</li>
+    <li>If the assertion fails(i.e.,the output is not as expected),an error message is printed showing the input values and the actual result.</li>
+  </ul> 
+  <li>Use of Timer:</li>
+  <ul>The Timer(1, units='ns') is used to wait for 1 nanosecond after changing the inputs, allowing the circuit to settle before checking the output 
+</ul> 
+  <li>Test Completion:</li>
+  <ul>
+    <li>If all assertions pass,the test completes successfully without any error messages.</li>
+  <li>If any assertion fails,the test stops at the failed test case and reports the failure.</li>
+  </ul>
   </ul>
 
 
