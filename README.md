@@ -81,14 +81,15 @@ Note: Make sure that $Path should be correct.
 <br>
  <ol>
    <li><strong>Basic Architecture</strong></li></p>
-Cocotb Requires Three things:
+The Ingredients:
 <ul>
-  <li>DUT(Design Under Test)</li
-  <li>Makefile</li>
+  <li> A Design Under Test(DUT):Verilog or VHDL</li
+  <li>A Makefile</li>
   <li>Testbench in Python</li></ul>
   <p>Below is the basic architecture of Cocotb:</p>
-<img src="" alt="Cocotb Architecture" width="500">
-
+<p align="center">
+<img src="doc/images/architecture.jpg" width="400">
+</p>
 
 
     
