@@ -280,7 +280,7 @@ assert dut.output_signal.value == expected_value, "Test failed: Output did not m
     <li><a href="https://docs.python.org/3/">Python Documentation</a></li>
     <li><a href="https://github.com/cocotb/cocotb">Cocotb GitHub Repository</a></li>
     <li><a href="https://docs.cocotb.org/en/stable/coroutines.html">Coroutines and tasks</a></li>
-  <li><a href="https://docs.cocotb.org/en/stable/"></a>  Cocotb Documentation</li>
+  <li><a href="https://docs.cocotb.org/en/stable/">Cocotb.org</a></li>
 </ul>
 </html>
 
