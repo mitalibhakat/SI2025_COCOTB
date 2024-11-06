@@ -75,7 +75,7 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 </code></pre>
 Note: Make sure that $Path should be correct.
 </ol>
-<h2 id="basics">2.Cocotb Basics</h2>
+<h2 id="basics">3.Cocotb Basics</h2>
 <p>Cocotb is a revolutionary coroutine-based framework that brings the simplicity of Python to the complex world of hardware verification. By allowing developers to write testbenches in Python, Cocotb bridges the gap between software development practices and hardware verification methodologies.
 <br>
  <ol>
