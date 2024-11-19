@@ -102,5 +102,52 @@ python3 -m venv venv_env
   include $(shell cocotb-config --makefiles)/Makefile.sim
   ```
 - Note: Make sure that $Path should be correct.
-  
+## 3. Cocotb Basics
+
+Cocotb is a revolutionary coroutine-based framework that brings the simplicity of Python to the complex world of hardware verification. By allowing developers to write testbenches in Python, Cocotb bridges the gap between software development practices and hardware verification methodologies.
+
+### 1. **Basic Architecture**
+
+#### The Ingredients:
+- **A Design Under Test (DUT):** Verilog or VHDL.
+- **A Makefile:** To manage the build and simulation process.
+- **Testbench:** Written in Python using Cocotb.
+
+**Below is the basic architecture of Cocotb:**
+
+<table>
+    <tr>
+        <td><img src="image/architecture.png" alt="Cocotb Architecture" height="300"></td>
+        <td><img src="image/overview.png" alt="Overview" height="300"></td>
+    </tr>
+</table>
+### Working:
+
+- **Design Under Test (DUT):** Runs in a standard simulator.
+- **Cocotb:** Provides an interface between the simulator and Python.
+- **Interfaces Used:**
+  - **Verilog Procedural Interface (VPI):** For Verilog designs.
+  - **VHDL Procedural Interface (VHPI):** For VHDL designs.
+
+- **Python Testbench Code Capabilities:**
+  - Reach into DUT hierarchy and change values.
+  - Wait for simulation time to pass.
+  - Wait for a rising or falling edge of a signal.
+
+### Basic Example:
+DUT of `xor_gate`:
+
+```verilog
+// xor_gate.v
+module xor_gate (
+    input wire a,
+    input wire b,
+    output wire y
+);
+    assign y = a ^ b;  // XOR gate logic
+endmodule
+```
+
+
+
 
