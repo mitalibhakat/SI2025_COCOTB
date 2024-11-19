@@ -101,7 +101,7 @@ python3 -m venv venv_env
 
   include $(shell cocotb-config --makefiles)/Makefile.sim
   ```
-## We can make one Makefile for Multiple design
+## One Makefile for Multiple design
   <p align="center">
  <img src="./image/makefile.png" alt="makefile" title="makefile" width="700" />
  </p>
@@ -224,7 +224,7 @@ async def test_xor_gate_simple(dut):
   - If all assertions pass, the test completes successfully without any error messages.
   - If any assertion fails, the test stops at the failed test case and reports the failure.
 
-### **Coroutines** and **Triggers**
+### 2.**Coroutines** and **Triggers**
 
 Cocotb uses **coroutines** and **triggers** to manage timing and events. This allows tasks to run concurrently within the same test, enabling the suspension and resumption of execution using `await`.
 
@@ -269,7 +269,7 @@ In this example:
 
 **Note:** The above example is for understanding the concept of **coroutines** and **triggers** in Cocotb. It demonstrates how coroutines can be used to wait for specific events such as time delays or signal edges using various triggers like `Timer`, `RisingEdge`, and `FallingEdge`.
 
-### Interacting with the DUT
+### 3.**Interacting with the DUT**
 
 Each signal in the DUT can be accessed directly as an attribute of the `dut` object:
 
