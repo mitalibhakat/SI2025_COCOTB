@@ -101,10 +101,33 @@ python3 -m venv venv_env
 
   include $(shell cocotb-config --makefiles)/Makefile.sim
   ```
-  -**We can make one Makefile for Multiple design**
-  <img src="./images/makefile.png" alt="makefile" title="makefile" width="300" />
+## We can make one Makefile for Multiple design
+  <p align="center">
+ <img src="./image/makefile.png" alt="makefile" title="makefile" width="700" />
+ </p>
 
-  
+## Design Selection
+
+- **DESIGN Variable:** Each design (e.g., `counter`, `xor_gate`) is specified using the `DESIGN` variable.
+- **Conditional Blocks:**
+  - Depending on the value of `DESIGN`:
+    - The corresponding Verilog file is set using `VERILOG_SOURCES`.
+    - The top-level module is set using `TOPLEVEL`.
+    - The Python test module is set using `MODULE`.
+      
+## Simulating a Specific Design
+
+To simulate a specific design, pass the `DESIGN` variable when invoking `make`.
+
+### Example: Simulate the `xor_gate` design
+```bash
+make DESIGN=xor_gate
+```
+## Advantages
+
+- **Reusable Structure**: Supports multiple designs without modifying the Makefile each time.
+- **Waveform Dumping**: Easily toggle VCD waveform dumping by setting `WAVES=1`.
+- **Cocotb Integration**: Seamlessly integrates with Cocotb for testing.
 - Note: Make sure that $Path should be correct.
 ## 3. Cocotb Basics
 
