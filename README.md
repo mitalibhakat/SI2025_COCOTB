@@ -101,6 +101,10 @@ python3 -m venv venv_env
 
   include $(shell cocotb-config --makefiles)/Makefile.sim
   ```
+  -**We can make one Makefile for Multiple design**
+  <img src="./images/makefile.png" alt="makefile" title="makefile" width="300" />
+
+  
 - Note: Make sure that $Path should be correct.
 ## 3. Cocotb Basics
 
