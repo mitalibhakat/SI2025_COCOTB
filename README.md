@@ -324,12 +324,6 @@ assert dut.y.value == 0, f"Test failed with a = 1, b = 1, expected y=0, got y={d
 cocotb.log.info("Simulation started")
 assert dut.output_signal.value == expected_value, "Test failed: Output did not match"
 ```
----
-
-## 6. Common Issues and Debugging
-
----
-
 ## 6. Common Issues and Debugging
 
 - **Simulator Path Issue:** Ensure the simulator is in your `$PATH`.
