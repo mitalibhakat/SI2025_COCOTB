@@ -108,7 +108,7 @@ python3 -m venv venv_env
 
 ## Design Selection
 
-- **DESIGN Variable:** Each design (e.g., `counter`, `xor_gate`) is specified using the `DESIGN` variable.
+- **DESIGN Variable:** Each design (e.g., `shift_register`, `xor_gate`) is specified using the `DESIGN` variable.
 - **Conditional Blocks:**
   - Depending on the value of `DESIGN`:
     - The corresponding Verilog file is set using `VERILOG_SOURCES`.
