@@ -75,7 +75,7 @@ python3 -m venv venv_env
   ```
   - **Install Cocotb Bus :**
     ```bash
-    pip install cocotb[bus
+    pip install cocotb[bus]
     ```
   - **Install a Supported Simulator :**
     Cocotb supports several simulators,such as Icarus Verilog, ModelSim, Xcelium, and VCS.Here's how to install Icarus Verilig for Open-Source Simulation:
@@ -86,7 +86,7 @@ python3 -m venv venv_env
   ```
   - **Verify Installation:**
   ```bash
-  python -m cocotb.config
+  pip show cocotb
   iverilog -v
   ```
 - **Makefile:**
